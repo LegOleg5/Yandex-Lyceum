@@ -37,7 +37,7 @@ class Window(QtWidgets.QMainWindow):
         fileMenu = mainMenu.addMenu("File")
         b_size = mainMenu.addMenu("Size")
         b_color = mainMenu.addMenu("Color")
-        shapes = mainMenu.addMenu("Shapes")
+        shapes = mainMenu.addMenu("Tools")
 
         # история
         fileHistoryAction = QAction("History    'Ctrl + h'", self)
@@ -95,6 +95,9 @@ class Window(QtWidgets.QMainWindow):
         red.triggered.connect(self.redColor)
 
         # фигуры
+        brush = QAction("Brush", self)
+        shapes.addAction(brush)
+        brush.triggered.connect(self.Toggle)
         arrow = QAction("Arrow", self)
         shapes.addAction(arrow)
         arrow.triggered.connect(self.arrowToggle)
@@ -148,12 +151,12 @@ class Window(QtWidgets.QMainWindow):
             canvasPainter = QtGui.QPainter(self)
             canvasPainter.begin(self)
             if self.arrow:
-                canvasPainter.drawLine(self.line_start[0], self.line_start[1], self.line_end[0], self.line_end[1])
-                drawArrow(QtGui.QPainter(self), self.line_start, self.line_end)
-                self.update()
+                #canvasPainter.drawLine(self.line_start[0], self.line_start[1], self.line_end[0], self.line_end[1])
+                #drawArrow(QtGui.QPainter(self), self.line_start, self.line_end)
+                #self.update()
 
                 for line in self.lines:
-                    drawArrow(QtGui.QPainter(self), line[0], line[1])
+                    drawArrow(QtGui.QPainter(self.imageDraw), line[0], line[1])
 
             canvasPainter.drawImage(self.rect(), self.image, self.image.rect())
             canvasPainter.drawImage(self.rect(), self.imageDraw, self.imageDraw.rect())
@@ -255,6 +258,7 @@ class Window(QtWidgets.QMainWindow):
 
 
 def drawArrow(qp, p1, p2):
+    print(p1, p2)
     qp.drawLine(*p1, *p2)
     line_vec = (p2[0] - p1[0], p2[1] - p1[1])
     line_len = (line_vec[0] ** 2 + line_vec[1] ** 2) ** 0.5
