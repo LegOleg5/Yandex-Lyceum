@@ -151,9 +151,6 @@ class Window(QtWidgets.QMainWindow):
             canvasPainter = QtGui.QPainter(self)
             canvasPainter.begin(self)
             if self.arrow:
-                #canvasPainter.drawLine(self.line_start[0], self.line_start[1], self.line_end[0], self.line_end[1])
-                #drawArrow(QtGui.QPainter(self), self.line_start, self.line_end)
-                #self.update()
 
                 for line in self.lines:
                     drawArrow(QtGui.QPainter(self.imageDraw), line[0], line[1])
