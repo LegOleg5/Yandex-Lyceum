@@ -97,7 +97,7 @@ class Window(QtWidgets.QMainWindow):
         # фигуры
         brush = QAction("Brush", self)
         shapes.addAction(brush)
-        brush.triggered.connect(self.Toggle)
+        brush.triggered.connect(self.brushToggle)
         arrow = QAction("Arrow", self)
         shapes.addAction(arrow)
         arrow.triggered.connect(self.arrowToggle)
@@ -253,8 +253,14 @@ class Window(QtWidgets.QMainWindow):
         self.second_form = History()
         self.second_form.show()
 
+    # инструменты
     def arrowToggle(self):
         self.arrow = True
+        self.drawing = False
+
+    def brushToggle(self):
+        self.drawing = True
+        self.arrow = False
 
 
 def drawArrow(qp, p1, p2):
