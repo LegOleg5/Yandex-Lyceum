@@ -261,7 +261,6 @@ class Window(QtWidgets.QMainWindow):
 
 
 def drawArrow(qp, p1, p2):
-    print(p1, p2)
     qp.drawLine(*p1, *p2)
     line_vec = (p2[0] - p1[0], p2[1] - p1[1])
     line_len = (line_vec[0] ** 2 + line_vec[1] ** 2) ** 0.5
@@ -290,15 +289,15 @@ class History(QtWidgets.QWidget):
         self.setWindowTitle('File History')
         self.setStyleSheet("background-color: white;")
 
-        self.tableWidget = QtWidgets.QTableWidget(0, 4, self)
+        self.tableWidget = QtWidgets.QTableWidget(8, 4, self)
         self.tableWidget.setHorizontalHeaderLabels(['name', 'directory', 'size', 'date'])
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setGeometry(0, 0, 600, 235)
 
-        for i, row in enumerate(self.res):
-            self.tableWidget.setRowCount(self.tableWidget.rowCount() + 1)
-            for j, elem in enumerate(row):
-                self.tableWidget.setItem(i, j, QTableWidgetItem(str(elem)))
+        #for i, row in enumerate(self.res):
+        #    self.tableWidget.setRowCount(self.tableWidget.rowCount() + 1)
+        #    for j, elem in enumerate(row):
+        #        self.tableWidget.setItem(i, j, QTableWidgetItem(str(elem)))
 
 
 
