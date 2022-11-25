@@ -1,0 +1,6 @@
+Библиотеки и встроенные Python модули:
+PyQt5 v.5.15.4
+sys
+OS
+datetime
+SQLite3
